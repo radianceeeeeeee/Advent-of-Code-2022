@@ -1,12 +1,3 @@
-dict = {
-    "A": 1,
-    "B": 2,
-    "C": 3,
-    "X": 1,
-    "Y": 2,
-    "Z": 3
-}
-
 total_score = 0
 
 with open('input2.txt') as f:
