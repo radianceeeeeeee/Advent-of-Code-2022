@@ -3,30 +3,30 @@ dict_lower = {chr(x): x - 96 for x in range(97, 123)}
 
 total_priority = 0
 
-def find_same_letter(arr):
-    for i in arr[0]:
-        for j in arr[1]:
-            for k in arr[2]:
-                if i == j and j == k:
-                    return i
-
 with open('input3.txt') as f:
     inp = f.readlines()
-    elf = 0
-    sacks = []
+    elf = 1
+    same_letters = set()
+
     for line in inp:
-        elf += 1
-        sacks.append(line)
-        if elf == 3:
-            x = find_same_letter(sacks)
+        if elf == 1:
+            same_letters = set(list(line))
+            elf += 1
+        elif elf == 2:
+            same_letters = same_letters.intersection(set(list(line.rstrip('\n'))))
+            elf += 1
+        else:
+            same_letters = same_letters.intersection(set(list(line.rstrip('\n'))))
+            x = same_letters.pop()              # NOTE: same_letters is guaranteed to contain 1 element due to problem specs
 
             if x in dict_upper.keys():
                 total_priority += dict_upper[x]
             else:
                 total_priority += dict_lower[x]
+            
+            same_letters.clear()
+            elf = 1
 
-            elf = 0
-            sacks = []
         
 print(total_priority)
 
