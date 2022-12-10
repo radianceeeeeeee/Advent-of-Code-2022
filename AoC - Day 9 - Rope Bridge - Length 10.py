@@ -16,7 +16,7 @@ def sign(num):
 
 def tail_locator(head, tail):
     if abs(head[0] - tail[0]) <= 1 and abs(head[1] - tail[1]) <= 1:     # check if tail is below two spaces away from head
-        return tuple(tail)
+        return tail
     
     rMovement = sign(head[0] - tail[0])
     cMovement = sign(head[1] - tail[1])

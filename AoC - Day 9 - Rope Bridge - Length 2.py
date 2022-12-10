@@ -8,12 +8,12 @@ def sign(num):
 
 def tail_locator(head, tail):
     if abs(head[0] - tail[0]) <= 1 and abs(head[1] - tail[1]) <= 1:     # check if tail is below two spaces away from head
-        return tuple(tail)
+        return tail
     
     rMovement = sign(head[0] - tail[0])
     cMovement = sign(head[1] - tail[1])
     
-    return (tail[0] + rMovement, tail[1] + cMovement)
+    return tail[0] + rMovement, tail[1] + cMovement
 
 
 visitedCoords = set()
@@ -38,6 +38,6 @@ with open('input9.txt') as f:
             head[0] += rMovement
             head[1] += cMovement
             tail = tail_locator(head, tail)
-            visitedCoords.add(tail)
+            visitedCoords.add(tuple(tail))
 
 print(len(visitedCoords))
